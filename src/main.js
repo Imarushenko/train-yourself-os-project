@@ -189,6 +189,21 @@ function getLocalStorage() {
     savedSettings = [];
 }
 
+// if the workout button was clicked, store that info and load the next page
+$("#start").click(function () {
+    localStorage.setItem("type", $("#type").val());
+    localStorage.setItem("intensity", $("#intensity").val());
+    localStorage.setItem("genre", $("#genre").val());
+    // store the pageChange variable to local storage as a string
+    var buttonInput = JSON.stringify("select");
+    localStorage.setItem("pageChange", buttonInput);
+    // store the selected genre to local storage as a string
+    var genreSelected = JSON.stringify($("#genre").val());
+    localStorage.setItem("genre", genreSelected);
+    // change to the workout page
+    $(location).attr("href", "workout.html");
+})
+
 // when the document is loaded check the page
 $(document).ready(
     function () { 
