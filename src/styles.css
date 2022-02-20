@@ -91,21 +91,6 @@
         border-collapse: collapse;
         border-style: hidden;
     }
-    /* CSS styling for the box around the song playlist */
-    .reveal {
-        background-color: #1a1a2e;
-    }
-
-    .reveal h2 {
-        text-align: center;
-    }
-
-    .reveal button {
-        margin-top: 40px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
 
     .reveal .row {
         text-align: center;
@@ -116,62 +101,18 @@
         padding: 0px;
     }
 
-    .reveal .close-button {
-        margin-top: 0;
-    }
-
-    .snackbar {
-        visibility: hidden;
-        min-width: 40vw;
-        margin-left: -20vw;
-        background-color: #e94560;
-        color: #fff;
-        text-align: center;
-        font-size: 1.3em;
-        border-radius: 2px;
-        padding: 16px;
-        position: fixed;
-        z-index: 1;
-        left: 50%; 
-        bottom: 30px;
-        border-radius: 20px;
-    }
-
-    .snackbar-show {
-        visibility: visible;
-        -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
-        animation: fadein 0.5s, fadeout 0.5s 1.5s;
-    }
-
-    .fa-trash-alt {
-        color: #e94560;
-        font-size: 1.5em
-    }
-    
-    .reveal .delete {
-        margin-top: 10px;
-        margin-left: 10px;
-    }
-    
-    #song-playlist {
-        background-color: rgba(255, 255, 255, 0.1);
-        border: 4px solid #0f3460;
-        border-radius: 20px;
-        margin-top: 10px;
-        margin-bottom: 1%;
-        height: 400px;
-        position: relative;
-    }
     /* CSS styling for the individual table elements */
     
     table tr:nth-of-type(odd) {
-        color: #ffffff !important;
-        background-color: #191414 !important;
+        color: #34495E !important;
+        font-weight: "bold";
+        background-color: #82E0AA !important;
     }
     
     table tr:nth-of-type(even) {
-        color: #ffffff !important;
-        background-color: #1f1a1a !important;
+        color: #34495E !important;
+        font-weight: "bold";
+        background-color: #82E0AA !important;
     }
     /* scroll bar */
     
@@ -180,66 +121,14 @@
     }
     
      ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        box-shadow: inset 0 0 6px #239B56;
     }
     
      ::-webkit-scrollbar-thumb {
-        background-color: #1f1a1a;
-        border-radius: 20px;
+        background-color: #239B56;
+        border-radius: 25px;
     }
     
     iframe {
         border-radius: 20px;
-    }
-    /* changing the footer from fixed to sticky on the index page at 1000px height */
-
-    @-webkit-keyframes fadein {
-        from {bottom: 0; opacity: 0;}
-        to {bottom: 30px; opacity: 1;}
-      }
-      
-      @keyframes fadein {
-        from {bottom: 0; opacity: 0;}
-        to {bottom: 30px; opacity: 1;}
-      }
-      
-      @-webkit-keyframes fadeout {
-        from {bottom: 30px; opacity: 1;}
-        to {bottom: 0; opacity: 0;}
-      }
-      
-      @keyframes fadeout {
-        from {bottom: 30px; opacity: 1;}
-        to {bottom: 0; opacity: 0;}
-    }
-    
-    @media screen and (max-height: 840px) {
-        .home-footer {
-            position: sticky;
-        }
-        .snackbar {
-            min-width: 80vw;
-            margin-left: -40vw;
-        }
-
-        .left {
-            margin-right: 1vw;
-            margin-left: 0;
-        }
-
-        .right {
-            margin-left: 1vw;
-            margin-right: 0;
-        }
-
-        .center {
-            margin: 0 1vw;
-        }
-    }
-    /* changing the footer from sticky to fixed on the workout page at 1000px height */
-    
-    @media screen and (min-height: 1100px) {
-        .workout-footer {
-            position: fixed;
-        }
     }
