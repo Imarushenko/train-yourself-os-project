@@ -1,18 +1,14 @@
-// main js page
-
-// saved settings
+// variables
 var savedSettings;
-
-// global workout variables
 var workoutType;
 var workoutInt;
 
-// Workout Intensity Repetitions/Sets
+// workout intensity sets
 var repsEasy = "15 Repetitions, 3 Sets Each"
 var repsMed = "25 Repetitions, 4 sets Each"
 var repsHard = "As many as you can!"
 
-// array to store workout indexes
+// array to store workouts
 var workoutArray = [];
 
 // get a stored or random genre index
@@ -40,15 +36,12 @@ function getGenre(){
 
 // generate the workout playlist, taking in the url
 function workoutFunc(queryUrl){
-
     $.ajax({
         url: queryUrl,
         method: "GET"
     }).then(function (response) {
         var workouts = response.results;
-        // clear current workout playlist to avoid issues
-        // $(`tbody`).empty();
-        // for each workout index, populate a new row in the playlist
+        // for each workout index, populate a new row
         for(var i = 0; i < workoutArray.length; i++){
             // create the row and 3 data points
             var newRow = $(`<tr>`);
@@ -118,17 +111,6 @@ function getWorkout(index){
     }
 }
 
-//selects a random workout intensity level and a random workout type
-function randomWorkout() {
-    var intensity = ["easy", "medium","hard"];
-    var workout = ["8", "9", "10", "11", "12", "13"];
-    // set a random intensity
-    workoutInt = intensity[Math.floor(Math.random() * intensity.length)];
-    // call a random workout
-    workoutType = workout[Math.floor(Math.random() * workout.length)]
-    getWorkout(workoutType);
-
-}
 // on page load, check the page
 function checkPage() {
     // grab the current url
@@ -207,228 +189,6 @@ function getLocalStorage() {
     savedSettings = [];
 }
 
-function clearLocal() {
-    var settings = localStorage.getItem("saved-settings");
-    localStorage.clear();
-    localStorage.setItem("saved-settings", settings);
-}
-
-// if the workout button was clicked, store that info and load the next page
-$("#start").click(function () {
-    localStorage.setItem("type", $("#type").val());
-    localStorage.setItem("intensity", $("#intensity").val());
-    localStorage.setItem("genre", $("#genre").val());
-    // store the pageChange variable to local storage as a string
-    var buttonInput = JSON.stringify("select");
-    localStorage.setItem("pageChange", buttonInput);
-    // store the selected genre to local storage as a string
-    var genreSelected = JSON.stringify($("#genre").val());
-    localStorage.setItem("genre", genreSelected);
-    // change to the workout page
-    $(location).attr("href", "workout.html");
-})
-
-    // if the random button was clicked, store that info and load the next page
-$("#random").click(function () {
-    // store the pageChange variable to local storage as a string
-    var buttonInput = JSON.stringify("random");
-    localStorage.setItem("pageChange", buttonInput);
-    $(location).attr("href", "workout.html");
-})
-
-$("#return").click(function () {
-    // if "Go Back" on workout page is clicked, clear local storage except for saved settings, 
-    // and return to home page
-    clearLocal();
-    $(location).attr("href", "index.html");
-})
-
-$(".reveal .save-button").click(function () {
-    var currentSettings = {
-        name : $("#name").val()
-    }  
-
-    var id = $(this).attr("id")
-    currentSettings.type = id.substring(id.indexOf("-") + 1);
-
-    if (currentSettings.type !== "workout") {
-        currentSettings.playlist = $("iframe").attr("src").substring($("iframe").attr("src").indexOf("playlist/") + 9);
-    }
-
-    if (currentSettings.type !== "playlist") {
-        currentSettings.workoutType = workoutType;
-        currentSettings.workoutInt = workoutInt;
-    }
-
-    savedSettings.unshift(currentSettings);
-    localStorage.setItem("saved-settings", JSON.stringify(savedSettings));
-    $("#snackbar-" + currentSettings.type).addClass("snackbar-show");
-    setTimeout(function () { 
-        $("#snackbar-" + currentSettings.type).removeClass("snackbar-show") 
-    }, 2000);
-    $("#name").val("");
-});
-
-$("#load").click(function () {
-    var snack;
-    if (!$("#saved-combos").prop("disabled")) {
-        for (var index = 0; index < savedSettings.length; index++) {
-            if (savedSettings[index].name === $("#saved-combos").val()) {
-                $("#type").val(savedSettings[index].workoutType);
-                $("#intensity").val(savedSettings[index].workoutInt);
-                localStorage.setItem("type", savedSettings[index].workoutType);
-                localStorage.setItem("intensity", savedSettings[index].workoutInt);
-                $("#genre").val("playlist");
-                localStorage.setItem("playlist", savedSettings[index].playlist);
-                snack = "combo-load";
-                break;
-            }
-        }
-    } else {
-        if ($("#saved-playlists").val() !== "") {
-            for (var index = 0; index < savedSettings.length; index++) {
-                if (savedSettings[index].name === $("#saved-playlists").val()) {
-                    $("#genre").val("playlist");
-                    localStorage.setItem("playlist", savedSettings[index].playlist);
-                    snack = "playlist-load";
-                    break;
-                }
-            }
-        }
-        if ($("#saved-workouts").val() !== "") {
-            for (var index = 0; index < savedSettings.length; index++) {
-                if (savedSettings[index].name === $("#saved-workouts").val()) {
-                    $("#type").val(savedSettings[index].workoutType);
-                    $("#intensity").val(savedSettings[index].workoutInt);
-                    localStorage.setItem("type", savedSettings[index].workoutType);
-                    localStorage.setItem("intensity", savedSettings[index].workoutInt);
-                    if (snack === "playlist-load") {
-                        snack = "combo-load";
-                    } else {
-                        snack = "workout-load";
-                    }
-                    break;
-                }
-            }
-        }  
-    }
-    if (snack === "combo-load") {
-        var buttonInput = JSON.stringify("select");
-        localStorage.setItem("pageChange", buttonInput);
-        $(location).attr("href", "workout.html");
-    } else {
-        $("#clear").prop("disabled", false);
-        $("#saved-playlists").val("");
-        $("#saved-workouts").val("");
-        $("#saved-combos").val("");
-        $("#saved-playlists").prop("disabled", false);
-        $("#saved-workouts").prop("disabled", false);
-        $("#saved-combos").prop("disabled", false);
-        $("#snackbar-" + snack).addClass("snackbar-show");
-        setTimeout(function () {
-            $("#snackbar-" + snack).removeClass("snackbar-show") 
-        }, 2000);
-    }
-});
-
-$("#name").keyup(function () {
-    if ($(this).val().trim().length > 0) {
-        $("#save-playlist").prop("disabled", false);
-        $("#save-workout").prop("disabled", false);
-        $("#save-combo").prop("disabled", false);
-        $("#error-text").empty();
-    }
-    for (var index = 0; index < savedSettings.length; index++) {
-        if (savedSettings[index].name === $(this).val()) {
-            $("#save-playlist").prop("disabled", true);
-            $("#save-workout").prop("disabled", true);
-            $("#save-combo").prop("disabled", true);
-            $("#error-text").text("Setting name already exists");
-            return;
-        } else if ($(this).val().trim().length > 0) {
-            $("#save-playlist").prop("disabled", false);
-            $("#save-workout").prop("disabled", false);
-            $("#save-combo").prop("disabled", false);
-            $("#error-text").empty();
-        }
-    }
-});
-
-$("#genre").change(function () {
-    if ($(this).val() !== "playlist") {
-        localStorage.removeItem("playlist");
-        if (!localStorage.getItem("type")) {
-            $("#clear").prop("disabled", true);
-        }
-    }
-})
-
-$(".workout").change(function () {
-    var playlist;
-    if (localStorage.getItem("type")) {
-        if (localStorage.getItem("playlist")) {
-            playlist = localStorage.getItem("playlist");
-        }
-        clearLocal();
-    }
-    if (playlist) {
-        localStorage.setItem("playlist", playlist);
-    }
-});
-
-$("#load-modal select").change(function () {
-    if ($("#saved-playlists").val() !== "" || $("#saved-workouts").val() !== "" || $("#saved-combos").val() !== "") {
-        $("#load").prop("disabled", false);
-    } else {
-        $("#load").prop("disabled", true);
-    }
-    if ($("#saved-playlists").val() !== "" || $("#saved-workouts").val() !== "") {
-        $("#saved-combos").prop("disabled", true);
-    } else {
-        $("#saved-combos").prop("disabled", false);
-    }
-    if ($("#saved-combos").val() !== "") {
-        $("#saved-playlists").prop("disabled", true);
-        $("#saved-workouts").prop("disabled", true);
-    } else {
-        $("#saved-playlists").prop("disabled", false);
-        $("#saved-workouts").prop("disabled", false);
-    }
-});
-
-$(".delete").click(function () {
-    var adj = "saved" + $(this).attr("id").substring($(this).attr("id").indexOf("-")) + "s";
-    for (var index = 0; index < savedSettings.length; index++) {
-        if (savedSettings[index].name === $("#" + adj).val()) {
-            $("option[value='" + $("#" + adj).val() +"'").remove();
-            savedSettings.splice(index, 1);
-            localStorage.setItem("saved-settings", JSON.stringify(savedSettings));
-            var id = $(this).attr("id");
-            $("#snackbar-" + id).addClass("snackbar-show");
-            setTimeout(function () { 
-                $("#snackbar-" + id).removeClass("snackbar-show") 
-            }, 2000);
-            $("#" + adj).val("");
-            if ($("#saved-playlists").val() === "" && $("#saved-workouts").val() === "") {
-                $("#saved-combos").prop("disabled", false);
-            }
-            break;
-        }
-    }
-});
-
-$("#clear").click(function () {
-    clearLocal();
-    $("#type").prop("selectedIndex", 0);
-    $("#intensity").prop("selectedIndex", 0);
-    $("#genre").prop("selectedIndex", 0);
-    var id = $(this).attr("id");
-    $("#snackbar-" + id).addClass("snackbar-show");
-    $(this).prop("disabled", true);
-    setTimeout(function () { 
-        $("#snackbar-" + id).removeClass("snackbar-show") 
-    }, 2000);
-});
 // when the document is loaded check the page
 $(document).ready(
     function () { 
