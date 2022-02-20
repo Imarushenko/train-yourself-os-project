@@ -6,103 +6,56 @@
         color: #fefefe;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
-    
-    h1 {
-        font-family: 'Rowdies', cursive;
-    }
+
     /* CSS Styling for the buttons */
     
     .button {
         border-radius: 10px;
         margin: 0 0.2rem 0 0.2rem;
         background-color: #1E88E5;
-    }
-    /* CSS Styling for the labels */
-    
-    .note {
-        font-size: 0.8rem;
+        border-color: red;
     }
 
     .note-div {
         margin: 0;
     }
     label {
-        color: #FF3D00;
+        color: #34495E;
+        font-size: 16px;
+        font-weight: bold;
     }
     /* CSS Styling for select fields */
     
     select {
         border-radius: 10px;
     }
+
     /* CSS Styling for the header */
-    
     header {
         height: 150px;
         background-color: #B0BEC5;
         color: #33691E;
     }
+
     /* CSS Styling for the form */
-    
     .input-box {
         background-color: rgba(255, 255, 255, 0.1);
-        height: 500px;
-        border: 4px solid #0f3460;
+        height: 380px;
+        border: 5px solid #0f3460;
         border-radius: 20px;
-        margin-bottom: 34px;
+        margin-bottom: 40px;
     }
-    /* CSS Styling for the footer */
-    
-    .home-footer {
-        position: fixed;
-        bottom: 0;
-        height: 100px;
-        background-color: #1a1a2e;
-        color: #e94560;
-    }
-    
-    .workout-footer {
-        position: sticky;
-        bottom: 0;
-        height: 100px;
-        background-color: #1a1a2e;
-        color: #e94560;
-    }
-    /* CSS styling for the button section */
-    
-    #return {
-        margin-bottom: 1%;
-        margin-top: 1%;
-    }
+
     /* CSS styling for the box around the workout table */
 
-    #error-text {
-        color: #e94560;
-    }
-    
     .output-box {
-        background-color: rgba(255, 255, 255, 0.1);
         border: 4px solid #0f3460;
         border-radius: 20px;
-        height: 350px;
+        height: 400px;
         position: relative;
-    }
-    
-    table {
-        border-collapse: collapse;
-        border-style: hidden;
-    }
-
-    .reveal .row {
-        text-align: center;
-        padding: 20px;
-    }
-
-    .reveal column {
-        padding: 0px;
     }
 
     /* CSS styling for the individual table elements */
-    
     table tr:nth-of-type(odd) {
         color: #34495E !important;
         font-weight: "bold";
@@ -114,8 +67,8 @@
         font-weight: "bold";
         background-color: #82E0AA !important;
     }
-    /* scroll bar */
     
+    /* scroll bar */
      ::-webkit-scrollbar {
         width: 1em;
     }
@@ -128,7 +81,4 @@
         background-color: #239B56;
         border-radius: 25px;
     }
-    
-    iframe {
-        border-radius: 20px;
-    }
+

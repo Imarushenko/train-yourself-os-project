@@ -13,7 +13,7 @@ var workoutArray = [];
 
 // get a stored or random genre index
 function getGenre(){
-    //Math.floor(Math.random() * genreArray.length);
+    Math.floor(Math.random() * genreArray.length);
     // if the local storage has something in it
     var genreStr = "";
     if (JSON.parse(localStorage.getItem("genre"))) {
@@ -34,7 +34,7 @@ function getGenre(){
     return (genreNumber);
 }
 
-// generate the workout playlist, taking in the url
+// generate the workout, taking in the url
 function workoutFunc(queryUrl){
     $.ajax({
         url: queryUrl,
