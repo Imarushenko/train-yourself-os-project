@@ -51,7 +51,7 @@
     .output-box {
         border: 4px solid #0f3460;
         border-radius: 20px;
-        height: 400px;
+        height: 450px;
         position: relative;
     }
 
@@ -74,11 +74,11 @@
     }
     
      ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px #239B56;
+        box-shadow: inset 0 0 6px white;
     }
     
      ::-webkit-scrollbar-thumb {
-        background-color: #239B56;
+        background-color: black;
         border-radius: 25px;
     }
 

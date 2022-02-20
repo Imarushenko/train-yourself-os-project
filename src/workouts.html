@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="shortcut icon"
       href="https://cdn.iconscout.com/icon/free/png-64/workout-40-1100757.png"
@@ -16,11 +17,7 @@
       integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I="
       crossorigin="anonymous"
     />
-    <!-- Link to Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap"
-      rel="stylesheet"
-    />
+    
     <!-- Link to CSS sheet -->
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -28,17 +25,14 @@
   <body class="grid-x grid-padding">
     <!--Header-->
     <header class="row grid-x grid-padding small-12 align-center align-middle">
-      <h1>Train Yourself&nbsp;</h1>
-      <i class="fad fa-dumbbell fa-4x"></i>
+      <h1>Train Yourself</h1>
     </header>
-
-       
-
-    <!--Button for returning to main page and saving current workout + settings-->
+    
+    <!-- returnto main page button -->
     <div
       class="row grid-x grid-padding small-12 medium-8 medium-offset-2 align-center align-middle"
     >
-      <a href="../index.html"><button type="button" class="button" id="return" style="margin: 20px;">Go Back</button></a>
+      <a href="../index.html"><button type="button" class="button" id="return" style="margin: 20px;">Back</button></a>
     </div>
 
     <!--Table for displaying the workout chosen-->
@@ -51,36 +45,26 @@
           <tr>
             <th class="exercise-title">Exercise</th>
             <th class="exercise-title">Description of Exercise</th>
-            <th class="exercise-title">Number of Sets</th>
+            <th class="exercise-title">Sets</th>
           </tr>
         </thead>
         <tbody></tbody>
-      </table>
-
-      <!-- footer -->
-     
+      </table>  
     </div>
 
-    <!-- Fontawesome Script -->
-    <script
-      src="https://kit.fontawesome.com/c7d28a1474.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- jQuery -->
+    <!-- scripts -->
     <script
       language="JavaScript"
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
     ></script>
 
-    <!-- Link to Foundation Javascript -->
     <script
       src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
       integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o="
       crossorigin="anonymous"
     ></script>
 
-    <!-- main js -->
     <script src="main.js"></script>
   </body>
 </html>

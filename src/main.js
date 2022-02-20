@@ -119,7 +119,7 @@ function checkPage() {
     // parse the url down to the last section
     str = str.substring(str.lastIndexOf('/') + 1);
     // if the last section is the workout.html
-    if (str === "workout.html") {
+    if (str === "workouts.html") {
         // create a new variable to get the page change button
         var pageVal = "";
         // if the local storage has something in it
