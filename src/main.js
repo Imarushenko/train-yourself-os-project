@@ -132,46 +132,11 @@ function checkPage() {
                 if (pageVal === "select") {
                     // call the workout based on the user input
                     getWorkout(workoutType);
-                    // populate the music playlist
-                    if (localStorage.getItem("playlist")) {
-                        musicPlaylist(localStorage.getItem("playlist"));
-                    } else if (pageVal === "select") {
-                        checkSpot();
-                    }
-                    
-                    // end the function
-                    return;
-                }
-                // if the user pressed the random button
-                if (pageVal === "random") {
-                    if (localStorage.getItem("type")) {
-                        getWorkout(workoutType);
-                    } else {
-                        randomWorkout();
-                    }
-                    if (localStorage.getItem("playlist")) {
-                        musicPlaylist(localStorage.getItem("playlist"));
-                    } else {
-                        // populate the music playlist
-                        checkSpot();
-                    }
-                    // end the function
-                    return;
                 }
             }
 
         }
-    } else if (str === "index.html") {
-        clearLocal();
-        if (savedSettings) {
-            for (var index = 0; index < savedSettings.length; index++) {
-                $("#saved-" + savedSettings[index].type + "s").append($("<option>").val(savedSettings[index].name).text(savedSettings[index].name));
-            }
-        }
-    }
-    // if the user navigated to the workout page or cleared their local storage
-    randomWorkout();
-    checkSpot();
+    } 
 }
 
 // if workout settings and/or previous saved settings  are available in local storage, 
@@ -181,12 +146,6 @@ function getLocalStorage() {
         workoutType = localStorage.getItem("type");
         workoutInt = localStorage.getItem("intensity");
     }
-    // checks to make sure saved-settings is an array
-    if (localStorage.getItem("saved-settings")) {
-        savedSettings = JSON.parse(localStorage.getItem("saved-settings"));
-        return;
-    }
-    savedSettings = [];
 }
 
 // if the workout button was clicked, store that info and load the next page
