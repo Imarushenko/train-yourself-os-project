@@ -49,7 +49,7 @@ function workoutFunc(queryUrl){
     });
 }
 
-// based on workout, set url, set the workout indexes, call the workout generator
+// based on workout, set url, set the workout indexes, call the workout generator (API)
 function getWorkout(index){
     // arms
     if (index === "8") {
@@ -92,7 +92,7 @@ function getWorkout(index){
 
 // on page load, check the page
 function checkPage() {
-    // grab the current url
+    // take the current url
     getLocalStorage();
     var str = $(location).attr("href");
     // parse the url down to the last section
@@ -127,22 +127,6 @@ function getLocalStorage() {
         workoutInt = localStorage.getItem("intensity");
     }
 }
-
-// if the workout button was clicked, store that info and load the next page
-$("#start").click(function () {
-    // Appache - setItem() Dispatches a storage event on Window objects holding an equivalent Storage object.
-    localStorage.setItem("type", $("#type").val());
-    localStorage.setItem("intensity", $("#intensity").val());
-    localStorage.setItem("genre", $("#genre").val());
-    // store the pageChange variable to local storage as a string
-    var buttonInput = JSON.stringify("select");
-    localStorage.setItem("pageChange", buttonInput);
-    // store the selected genre to local storage as a string
-    var genreSelected = JSON.stringify($("#genre").val());
-    localStorage.setItem("genre", genreSelected);
-    // change to the workout page
-    $(location).attr("href", "workout.html");
-})
 
 // when the document is loaded check the page
 $(document).ready(
