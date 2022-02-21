@@ -2,7 +2,7 @@
 var savedSettings;
 var workoutType;
 var workoutInt;
-
+var workoutEquipment;
 // workout intensity sets
 var repsEasy = "15 Repetitions, 3 Sets Each"
 var repsMed = "25 Repetitions, 4 sets Each"
@@ -30,6 +30,7 @@ function workoutFunc(queryUrl){
             // name & dedscription comes from the API: https://wger.de/api/v2/exerciseinfo/?language=2&equipment=3&category=8
             newData1.html(workouts[workoutArray[i]].name);
             newData2.html(workouts[workoutArray[i]].description);
+            newData3.html(workouts[workoutArray[i]].equipment);
             if (workoutInt === 'easy') {
                 newData3.html(repsEasy);
             } else if (workoutInt === 'medium') {
@@ -123,6 +124,7 @@ function getLocalStorage() {
     if (localStorage.getItem("type")) {
         workoutType = localStorage.getItem("type");
         workoutInt = localStorage.getItem("intensity");
+        workoutEquipment = localStorage.getItem("equipment");
     }
 }
 
@@ -131,15 +133,7 @@ $("#start").click(function () {
     // Appache - setItem() Dispatches a storage event on Window objects holding an equivalent Storage object.
     localStorage.setItem("type", $("#type").val());
     localStorage.setItem("intensity", $("#intensity").val());
-    // localStorage.setItem("genre", $("#genre").val());
-    // store the pageChange variable to local storage as a string
-    // var buttonInput = JSON.stringify("select");
-    // localStorage.setItem("pageChange", buttonInput);
-    // store the selected genre to local storage as a string
-    var genreSelected = JSON.stringify($("#genre").val());
-    localStorage.setItem("genre", genreSelected);
-    // change to the workout page
-    $(location).attr("href", "workout.html");
+    workoutEquipment.setItem("equipment", $("#equipment").val());
 })
 
 // when the document is loaded check the page
