@@ -27,11 +27,9 @@ function workoutFunc(queryUrl){
             var newData1 = $(`<td>`);
             var newData2 = $(`<td>`);
             var newData3 = $(`<td>`);
-            // populate the name data point
+            // name & dedscription comes from the API: https://wger.de/api/v2/exerciseinfo/?language=2&equipment=3&category=8
             newData1.html(workouts[workoutArray[i]].name);
-            // populate the description data point
             newData2.html(workouts[workoutArray[i]].description);
-            // populate the intensity data point based on saved results
             if (workoutInt === 'easy') {
                 newData3.html(repsEasy);
             } else if (workoutInt === 'medium') {
@@ -127,6 +125,22 @@ function getLocalStorage() {
         workoutInt = localStorage.getItem("intensity");
     }
 }
+
+// if the start workout button was clicked, store that info and load the next page
+$("#start").click(function () {
+    // Appache - setItem() Dispatches a storage event on Window objects holding an equivalent Storage object.
+    localStorage.setItem("type", $("#type").val());
+    localStorage.setItem("intensity", $("#intensity").val());
+    // localStorage.setItem("genre", $("#genre").val());
+    // store the pageChange variable to local storage as a string
+    // var buttonInput = JSON.stringify("select");
+    // localStorage.setItem("pageChange", buttonInput);
+    // store the selected genre to local storage as a string
+    var genreSelected = JSON.stringify($("#genre").val());
+    localStorage.setItem("genre", genreSelected);
+    // change to the workout page
+    $(location).attr("href", "workout.html");
+})
 
 // when the document is loaded check the page
 $(document).ready(
