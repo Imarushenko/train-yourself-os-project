@@ -15,7 +15,7 @@ var workoutArray = [];
 function workoutFunc(queryUrl){
     // AJAX = Asynchronous JavaScript And XML
     // A browser built-in XMLHttpRequest
-    $.ajax({
+    $.ajax({    // browser -> server -> browser
         url: queryUrl,
         method: "GET"
     }).then(function (response) {
