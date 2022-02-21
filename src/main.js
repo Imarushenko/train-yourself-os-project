@@ -1,8 +1,8 @@
 // variables
 var savedSettings;
 var workoutType;
-var workoutInt;
-var workoutEquipment;
+var workoutIntensity;
+
 // workout intensity sets
 var repsEasy = "15 Repetitions, 3 Sets Each"
 var repsMed = "25 Repetitions, 4 sets Each"
@@ -30,14 +30,14 @@ function workoutFunc(queryUrl){
             // name & dedscription comes from the API: https://wger.de/api/v2/exerciseinfo/?language=2&equipment=3&category=8
             newData1.html(workouts[workoutArray[i]].name);
             newData2.html(workouts[workoutArray[i]].description);
-            newData3.html(workouts[workoutArray[i]].equipment);
-            if (workoutInt === 'easy') {
+            if (workoutIntensity === 'easy') {
                 newData3.html(repsEasy);
-            } else if (workoutInt === 'medium') {
+            } else if (workoutIntensity === 'medium') {
                 newData3.html(repsMed);
-            } else if (workoutInt === 'hard') {
+            } else if (workoutIntensity === 'hard') {
                 newData3.html(repsHard);
             }
+
             // add the data points to the row
             newRow.append(newData1);
             newRow.append(newData2);
@@ -112,7 +112,6 @@ function checkPage() {
                     getWorkout(workoutType);
                 }
             }
-
         }
     } 
 }
@@ -123,7 +122,7 @@ function getLocalStorage() {
     /** Appache - getItem() Returns the current value associated with the given key, or null if the given key does not exist. */
     if (localStorage.getItem("type")) {
         workoutType = localStorage.getItem("type");
-        workoutInt = localStorage.getItem("intensity");
+        workoutIntensity = localStorage.getItem("intensity");
         workoutEquipment = localStorage.getItem("equipment");
     }
 }
@@ -143,4 +142,3 @@ $(document).ready(
         $(document).foundation();
         checkPage(); 
 });
-
