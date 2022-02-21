@@ -11,31 +11,10 @@ var repsHard = "As many as you can!"
 // array to store workouts
 var workoutArray = [];
 
-// get a stored or random genre index
-function getGenre(){
-    Math.floor(Math.random() * genreArray.length);
-    // if the local storage has something in it
-    var genreStr = "";
-    if (JSON.parse(localStorage.getItem("genre"))) {
-        // if the stored data isn't empty
-        if ((JSON.parse(localStorage.getItem("genre")).length !== 0)) {
-            // set the genre value to the page change type
-            genreStr = (JSON.parse(localStorage.getItem("genre")));
-        }
-    }
-    // if there wasn't a stored genre, get a random one
-    if(genreStr === "")
-    {
-        // return a random index
-        return (Math.floor(Math.random() * genreArray.length));
-    }
-    // return the index of the stored genre
-    var genreNumber = genreArray.indexOf(genreStr);
-    return (genreNumber);
-}
-
-// generate the workout, taking in the url
+// generate the workout, taking in the browser with ajax - GET request
 function workoutFunc(queryUrl){
+    // AJAX = Asynchronous JavaScript And XML
+    // A browser built-in XMLHttpRequest
     $.ajax({
         url: queryUrl,
         method: "GET"
@@ -142,6 +121,7 @@ function checkPage() {
 // if workout settings and/or previous saved settings  are available in local storage, 
 // sets the corresponding global variables to values in local storage.
 function getLocalStorage() {
+    /** Appache - getItem() Returns the current value associated with the given key, or null if the given key does not exist. */
     if (localStorage.getItem("type")) {
         workoutType = localStorage.getItem("type");
         workoutInt = localStorage.getItem("intensity");
@@ -150,6 +130,7 @@ function getLocalStorage() {
 
 // if the workout button was clicked, store that info and load the next page
 $("#start").click(function () {
+    // Appache - setItem() Dispatches a storage event on Window objects holding an equivalent Storage object.
     localStorage.setItem("type", $("#type").val());
     localStorage.setItem("intensity", $("#intensity").val());
     localStorage.setItem("genre", $("#genre").val());
