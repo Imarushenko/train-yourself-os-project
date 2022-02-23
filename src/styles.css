@@ -1,84 +1,84 @@
-    /* main css */
-    /* CSS styling for the whole page */
-    
-    body {
-        background-color: #E0E0E0;
-        color: #fefefe;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
+/* main css */
+/* CSS styling for the whole page */
 
-    /* CSS Styling for the buttons */
-    
-    .button {
-        border-radius: 10px;
-        margin: 0 0.2rem 0 0.2rem;
-        background-color: #1E88E5;
-        border-color: red;
-    }
+body {
+  background-color: #e0e0e0;
+  color: #fefefe;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 
-    .note-div {
-        margin: 0;
-    }
-    label {
-        color: #34495E;
-        font-size: 16px;
-        font-weight: bold;
-    }
-    /* CSS Styling for select fields */
-    
-    select {
-        border-radius: 10px;
-    }
+/* CSS Styling for the buttons */
 
-    /* CSS Styling for the header */
-    header {
-        height: 150px;
-        background-color: #B0BEC5;
-        color: #33691E;
-    }
+.button {
+  border-radius: 10px;
+  margin: 0 0.2rem 0 0.2rem;
+  background-color: #1e88e5;
+  border-color: red;
+}
 
-    /* CSS Styling for the form */
-    .input-box {
-        background-color: rgba(255, 255, 255, 0.1);
-        height: 370px;
-        border: 5px solid #0f3460;
-        border-radius: 20px;
-        margin-bottom: 40px;
-    }
+.note-div {
+  margin: 0;
+}
+label {
+  color: #34495e;
+  font-size: 16px;
+  font-weight: bold;
+}
+/* CSS Styling for select fields */
 
-    /* CSS styling for the box around the workout table */
+select {
+  border-radius: 10px;
+}
 
-    .output-box {
-        border: 4px solid #0f3460;
-        border-radius: 20px;
-        height: 430px;
-        position: relative;
-    }
+/* CSS Styling for the header */
+header {
+  height: 150px;
+  background-color: #b0bec5;
+  color: #33691e;
+}
 
-    /* CSS styling for the individual table elements */
-    table tr:nth-of-type(odd) {
-        color: #34495E !important;
-        font-weight: "bold";
-        background-color: #82E0AA !important;
-    }
-    
-    table tr:nth-of-type(even) {
-        color: #34495E !important;
-        font-weight: "bold";
-        background-color: #26d46e !important;
-    }
-    
-    /* scroll bar */
-     ::-webkit-scrollbar {
-        width: 1em;
-    }
-    
-     ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px white;
-    }
-    
-     ::-webkit-scrollbar-thumb {
-        background-color: black;
-        border-radius: 25px;
-    }
+/* CSS Styling for the form */
+.input-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 370px;
+  border: 5px solid #0f3460;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
 
+/* CSS styling for the box around the workout table */
+
+.output-box {
+  border: 4px solid #0f3460;
+  border-radius: 20px;
+  height: 430px;
+  position: relative;
+}
+
+/* CSS styling for the individual table elements */
+table tr:nth-of-type(odd) {
+  color: #34495e !important;
+  font-weight: "bold";
+  background-color: #82e0aa !important;
+}
+
+table tr:nth-of-type(even) {
+  color: #34495e !important;
+  font-weight: "bold";
+  background-color: #26d46e !important;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 25px;
+}
