@@ -1,6 +1,3 @@
-/* main css */
-/* CSS styling for the whole page */
-
 body {
   background-color: #e0e0e0;
   color: #fefefe;
@@ -9,7 +6,6 @@ body {
 }
 
 /* CSS Styling for the buttons */
-
 .button {
   border-radius: 10px;
   margin: 0 0.2rem 0 0.2rem;
@@ -20,13 +16,14 @@ body {
 .note-div {
   margin: 0;
 }
+
 label {
   color: #34495e;
   font-size: 16px;
   font-weight: bold;
 }
-/* CSS Styling for select fields */
 
+/* CSS Styling for select fields */
 select {
   border-radius: 10px;
 }
@@ -48,7 +45,6 @@ header {
 }
 
 /* CSS styling for the box around the workout table */
-
 .output-box {
   border: 4px solid #0f3460;
   border-radius: 20px;
@@ -58,15 +54,15 @@ header {
 
 /* CSS styling for the individual table elements */
 table tr:nth-of-type(odd) {
-  color: #34495e !important;
+  color: #34495e;
   font-weight: "bold";
-  background-color: #82e0aa !important;
+  background-color: #82e0aa;
 }
 
 table tr:nth-of-type(even) {
-  color: #34495e !important;
+  color: #34495e;
   font-weight: "bold";
-  background-color: #26d46e !important;
+  background-color: #26d46e;
 }
 
 /* scroll bar */
